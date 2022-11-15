@@ -1,0 +1,43 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Chat";
+}
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="text-center">
+        <h1 class="display-4">Chat</h1>
+    </div>
+
+    <div>
+        <form>
+            <div class="form-group">
+                <textarea id="messages" class="form-control" rows="10">{{ messages.join('\n') }}</textarea>
+            </div>
+            <div class="form-group">
+                <input type="text" id="message" class="form-control" placeholder="Enter your message here" v-model="message"/>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" v-on:click.prevent="send" v-bind:disabled="!connected">Send</button>
+            </div>
+        </form>
+    </div>
+}
+else
+{
+    <div class="text-center">
+        <h1 class="display-4">Chat</h1>
+    </div>
+    <div class="text-center">
+        <h3 class="display-4">Please Log in to view chat</h3>
+    </div>
+}
+
+
+@section Scripts
+{
+    <script src="~/js/test_3_chat.js"></script>
+}

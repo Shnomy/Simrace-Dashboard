@@ -1,0 +1,33 @@
+@model IEnumerable<server.Models.LiveData>
+
+@{
+    ViewData["Title"] = "Analyze";
+}
+<body>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RaceTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RPM)
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach
+        (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RaceTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RPM)
+            </td>
+        </tr>
+    }    
+    </tbody>
+</table>
+</body>
